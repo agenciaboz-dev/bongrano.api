@@ -12,7 +12,7 @@ generator client {
         id          Int         @id @default(autoincrement())
         name        String
         address     String
-        phone       String
+        phone       String      @unique
         prize       Int
         timestamp   Int
     }
