@@ -571,6 +571,11 @@ has@^1.0.3:
   resolved "https://registry.yarnpkg.com/has/-/has-1.0.4.tgz#2eb2860e000011dae4f1406a86fe80e530fb2ec6"
   integrity sha512-qdSAmqLF6209RFj4VVItywPMbm3vWylknmB3nvNiUIs72xAimcM8nVYxYr7ncvZq5qzk9MKIZR8ijqD/1QuYjQ==
 
+hashids@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/hashids/-/hashids-2.3.0.tgz#af92c9cdb093c0ed3542cf0dcbd6c289125df387"
+  integrity sha512-ljM73TE/avEhNnazxaj0Dw3BbEUuLC5yYCQ9RSkSUcT4ZSU6ZebdKCIBJ+xT/DnSYW36E9k82GH1Q6MydSIosQ==
+
 http-errors@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-2.0.0.tgz#b7774a1486ef73cf7667ac9ae0858c012c57b9d3"
