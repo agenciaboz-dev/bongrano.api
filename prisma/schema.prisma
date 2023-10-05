@@ -13,8 +13,8 @@ generator client {
         name        String
         address     String
         phone       String      @unique
-        prize       Int
-        timestamp   Int
+        prize       Int?
+        timestamp   Int?
     }
 
     model Prize {
