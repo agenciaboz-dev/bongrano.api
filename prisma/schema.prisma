@@ -14,7 +14,7 @@ generator client {
         address     String
         phone       String      @unique
         prize       Int?
-        timestamp   Int?
+        timestamp   BigInt?
     }
 
     model Prize {
