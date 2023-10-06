@@ -12,12 +12,20 @@ router.post("/", async (request: Request, response: Response) => {
         if (user.prize === null) {
             const prizeNumber = await lottery()
 
-            response.json(prizeNumber)
+            response.json({ prize: prizeNumber })
 
             if (prizeNumber) {
                 // subtract prize
                 await prisma.prize.update({ where: { id: prizeNumber }, data: { quantity: { decrement: 1 } } })
             }
+
+            await prisma.user.update({
+                where: { id: data.id },
+                data: {
+                    prize: prizeNumber || 0,
+                    timestamp: new Date().getTime(),
+                },
+            })
         } else {
             response.json({ error: "Usuário já roletou" })
         }

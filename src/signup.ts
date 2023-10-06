@@ -2,6 +2,8 @@ import express, { Express, Request, Response } from "express"
 import { PrismaClient } from "@prisma/client"
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library"
 import hash from "./scripts/hash"
+import zap from "./zap"
+
 const router = express.Router()
 const prisma = new PrismaClient()
 
@@ -11,8 +13,10 @@ router.post("/", async (request: Request, response: Response) => {
 
     try {
         const user = await prisma.user.create({ data: { name: data.name, address: data.address, phone: data.phone } })
-        const code = hash.encrypt(user.id)
+        const code = hash.encrypt(user.id).toUpperCase()
         console.log(code)
+
+        zap.sendCode(code, user.phone)
 
         response.json({ code, user })
     } catch (error) {
