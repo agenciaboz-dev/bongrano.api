@@ -44,6 +44,7 @@ export const lottery = async () => {
                 })
 
                 const totalPossiblePrizes = (currentHour - eventStartTime + 1) * prizesPerHour
+                console.log({ totalPrizesWonSoFar, totalPossiblePrizes })
                 unclaimedPrizes = totalPossiblePrizes - totalPrizesWonSoFar
             }
 
