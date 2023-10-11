@@ -33,14 +33,9 @@ export const lottery = async () => {
                 previousHourStart >=
                 new Date(previousHourStart.getFullYear(), previousHourStart.getMonth(), previousHourStart.getDate(), eventStartTime)
             ) {
-                const eventStartHour = new Date(eventStartDate.getFullYear(), eventStartDate.getMonth(), eventStartDate.getDate(), eventStartTime)
-
-                console.log("Event Start:", Math.floor(eventStartHour.getTime()))
-                console.log("Current Hour Start:", Math.floor(currentHourStart.getTime()))
-
                 const totalPrizesWonSoFar = await prisma.user.count({
                     where: {
-                        prize: { not: null },
+                        NOT: [{ prize: null }, { prize: 0 }],
                     },
                 })
 
