@@ -16,13 +16,9 @@ export const lottery = async () => {
 
     // Check if we're currently within the event's date range.
     if (currentTime >= eventStartDate && currentTime <= eventEndDate) {
-        console.log("inside event date") // working
-
         // Ensure the current time is between 11 AM and 11 PM.
         const currentHour = currentTime.getHours()
         if (currentHour >= eventStartTime && currentHour < eventEndTime) {
-            console.log("inside event hour")
-
             const currentHourStart = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate(), currentHour)
             const previousHourStart = new Date(currentHourStart.getTime() - hourInMillis)
 

@@ -7,10 +7,11 @@ const api = axios.create({
 const sendCode = async (code: string, number: string) => {
     api.post("/whatsapp", { message: code, number })
         .then((response) => {
-            console.log(response.data)
+            console.log('sent zapzap')
+            // console.log(response.data)
         })
         .catch((error) => {
-            console.log(error)
+            // console.log(error)
         })
 }
 
