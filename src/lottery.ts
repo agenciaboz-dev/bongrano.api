@@ -37,8 +37,8 @@ export const lottery = async () => {
                 const totalPrizesWonSoFar = await prisma.user.count({
                     where: {
                         AND: [
-                            { timestamp: { gte: Math.floor(eventStartHour.getTime() / 1000) } },
-                            { timestamp: { lt: Math.floor(currentHourStart.getTime() / 1000) } },
+                            { timestamp: { gte: Math.floor(eventStartHour.getTime()) } },
+                            { timestamp: { lt: Math.floor(currentHourStart.getTime()) } },
                         ],
                     },
                 })
