@@ -33,18 +33,18 @@ export const lottery = async () => {
                 previousHourStart >=
                 new Date(previousHourStart.getFullYear(), previousHourStart.getMonth(), previousHourStart.getDate(), eventStartTime)
             ) {
-                // Find out how many prizes were won in the last hour.
-                const prizesWonLastHour = await prisma.user.count({
+                const eventStartHour = new Date(eventStartDate.getFullYear(), eventStartDate.getMonth(), eventStartDate.getDate(), eventStartTime)
+                const totalPrizesWonSoFar = await prisma.user.count({
                     where: {
                         AND: [
-                            { timestamp: { gte: Math.floor(previousHourStart.getTime() / 1000) } },
+                            { timestamp: { gte: Math.floor(eventStartHour.getTime() / 1000) } },
                             { timestamp: { lt: Math.floor(currentHourStart.getTime() / 1000) } },
                         ],
                     },
                 })
 
-                // Calculate unclaimed prizes from the last hour.
-                unclaimedPrizes = prizesPerHour - prizesWonLastHour
+                const totalPossiblePrizes = (currentHour - eventStartTime + 1) * prizesPerHour
+                unclaimedPrizes = totalPossiblePrizes - totalPrizesWonSoFar
             }
 
             // Calculate available prizes for this hour.
