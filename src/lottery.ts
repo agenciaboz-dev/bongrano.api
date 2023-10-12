@@ -7,7 +7,7 @@ export const lottery = async () => {
     const prizesPerHour = 20
 
     // Define event start and end dates.
-    const eventStartDate = new Date(2023, 9, 12) // October 12, 2023
+    const eventStartDate = new Date(2023, 9, 112) // October 12, 2023
     const eventEndDate = new Date(2023, 9, 15) // October 15, 2023
     const eventStartTime = 11 // 11
     const eventEndTime = 23
