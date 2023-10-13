@@ -7,7 +7,7 @@ export const lottery = async () => {
     const prizesPerHour = 20
 
     // Define event start and end dates.
-    const eventStartDate = new Date(2023, 9, 13) // October 12, 2023
+    const eventStartDate = new Date(2023, 9, 12) // October 12, 2023
     const eventEndDate = new Date(2023, 9, 15) // October 15, 2023
     const eventStartTime = 11 // 11
     const eventEndTime = 23
@@ -41,7 +41,7 @@ export const lottery = async () => {
             }
 
             // Calculate available prizes for this hour.
-            const availablePrizes = prizesPerHour + unclaimedPrizes
+            let availablePrizes = prizesPerHour + unclaimedPrizes
             if (availablePrizes > 0) {
                 const availablePrizeTypes = (
                     await prisma.prize.findMany({
@@ -62,6 +62,7 @@ export const lottery = async () => {
 
                 return randomNumber
             } else {
+                availablePrizes = availablePrizes * -1
                 console.log(prizesPerHour)
                 console.log(availablePrizes)
                 console.log("there is no prize left")
