@@ -42,31 +42,31 @@ export const lottery = async () => {
 
             // Calculate available prizes for this hour.
             let availablePrizes = prizesPerHour + unclaimedPrizes
-            if (availablePrizes > 0) {
-                const availablePrizeTypes = (
-                    await prisma.prize.findMany({
-                        where: {
-                            quantity: {
-                                gt: 0,
-                            },
+            // if (availablePrizes > 0) {
+            const availablePrizeTypes = (
+                await prisma.prize.findMany({
+                    where: {
+                        quantity: {
+                            gt: 0,
                         },
-                    })
-                ).map((item) => item.id)
+                    },
+                })
+            ).map((item) => item.id)
 
-                const prizes = [...availablePrizeTypes, 0, 0]
+            const prizes = [...availablePrizeTypes, 0, 0]
 
-                // Determine if user wins.
-                const randomNumber = prizes[Math.floor(Math.random() * prizes.length)]
+            // Determine if user wins.
+            const randomNumber = prizes[Math.floor(Math.random() * prizes.length)]
 
-                console.log({ unclaimedPrizes, availablePrizes, randomNumber, prizes })
+            console.log({ unclaimedPrizes, availablePrizes, randomNumber, prizes })
 
-                return randomNumber
-            } else {
-                availablePrizes = availablePrizes * -1
-                console.log(prizesPerHour)
-                console.log(availablePrizes)
-                console.log("there is no prize left")
-            }
+            return randomNumber
+            // } else {
+            // availablePrizes = availablePrizes * -1
+            // console.log(prizesPerHour)
+            // console.log(availablePrizes)
+            // console.log("there is no prize left")
+            // }
 
             // Rest of the logic to handle the win or no-win scenario.
         } else {
