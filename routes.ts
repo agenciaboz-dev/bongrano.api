@@ -29,7 +29,7 @@ router.get("/", async (request: Request, response: Response) => {
     const unclaimedPrizes = totalPossiblePrizes - totalPrizesWonSoFar
     const availablePrizes = prizesPerHour + unclaimedPrizes
 
-    response.send(JSON.stringify({ total, premiados, nada, canecas, produtos, disponiveis_nessa_hora: availablePrizes }, null, 4))
+    response.json({ total, premiados, nada, canecas, produtos, disponiveis_nessa_hora: availablePrizes })
 })
 
 router.use("/signup", signup)
