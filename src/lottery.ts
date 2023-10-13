@@ -62,6 +62,8 @@ export const lottery = async () => {
 
                 return randomNumber
             } else {
+                console.log(prizesPerHour)
+                console.log(availablePrizes)
                 console.log("there is no prize left")
             }
 
